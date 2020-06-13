@@ -12,6 +12,7 @@ import { PastelComponent } from './pages/pastel/pastel.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './pages/login/login.component';
     PastelComponent,
     InicioComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
