@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <div style="display: block">
+                        <canvas baseChart
+                            [datasets]="barChartData"
+                            [colors]="barChartColors"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [plugins]="barChartPlugins"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ng-select class="m-3" 
+                [items]="opcionesDimension"
+                placeholder="Seleccione una opción..."
+                [clearable]="false"
+                [multiple]="false"
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="dimensionSeleccionada">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesAnio"
+                [multiple]="false"
+                placeholder="Seleccione un año..."
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="anioSeleccionado">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesMeses"
+                [multiple]="false"
+                placeholder="Seleccione un mes..."
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="mesSeleccionado">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesItems"
+                [multiple]="true"
+                [clearable]="true"
+                [placeholder]="itemPlaceHolder"
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="itemSeleccionado">
+            </ng-select>
+        </div>
+    </div>
+</div>

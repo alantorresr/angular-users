@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <div class="chart">
+                        <canvas baseChart
+                            [data]="pieChartData"
+                            [labels]="pieChartLabels"
+                            [chartType]="pieChartType"
+                            [options]="pieChartOptions"
+                            [plugins]="pieChartPlugins"
+                            
+                            [legend]="pieChartLegend">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+                <!-- <div>
+                    <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Toggle Legend</button>
+                    <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
+                    <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
+                    <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
+                    <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button>
+                </div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <ng-select class="m-3" 
+                [items]="opcionesDimension"
+                placeholder="Seleccione una opción..."
+                [clearable]="false"
+                [multiple]="false"
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="dimensionSeleccionada">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesAnio"
+                [multiple]="false"
+                placeholder="Seleccione un año..."
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="anioSeleccionado">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesMeses"
+                [multiple]="false"
+                placeholder="Seleccione un mes..."
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="mesSeleccionado">
+            </ng-select>
+
+            <ng-select class="m-3"
+                [items]="opcionesItems"
+                [multiple]="true"
+                [clearable]="true"
+                [placeholder]="itemPlaceHolder"
+                (change)="imprimirSelecciones()"
+                [(ngModel)]="itemSeleccionado">
+            </ng-select>
+            <!-- <p>{{itemSeleccionado}}</p> -->
+            <!-- <div class="mt-3">
+                Selected value: <br/>
+                <ul>
+                    <li *ngFor="let item of selectedPeople">{{item.name}}</li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
