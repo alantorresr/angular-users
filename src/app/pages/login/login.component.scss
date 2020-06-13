@@ -1,0 +1,20 @@
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login{
+    width: 30rem;
+    border: 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.text-error{
+    color: #f03434!important;
+}
+
+.btn-login{
+    background-color: #22313f!important;
+}
