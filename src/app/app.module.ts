@@ -10,13 +10,17 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HistogramaComponent } from './pages/histograma/histograma.component';
 import { PastelComponent } from './pages/pastel/pastel.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HistogramaComponent,
     PastelComponent,
-    InicioComponent
+    InicioComponent,
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
