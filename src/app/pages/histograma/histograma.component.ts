@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NorthwindService } from 'src/app/services/northwind.service';
-import { UsersapiService } from 'src/app/services/usersapi.service';
 
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -64,7 +63,7 @@ export class HistogramaComponent implements OnInit {
 
   public topFilter: any = 5;
 
-  constructor(private north: NorthwindService, private usersApi: UsersapiService) { }
+  constructor(private north: NorthwindService) { }
 
   dataApi: any;
 
@@ -75,15 +74,6 @@ export class HistogramaComponent implements OnInit {
       this.inicializarValores();
       this.llenarGrafica();
     });
-
-    const id = "5ee44aa1d9dd27343844eaea";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTQ0YWExZDlkZDI3MzQzODQ0ZWFlYSIsImlhdCI6MTU5MjAxOTYxNywiZXhwIjoxNTkyMTA2MDE3fQ.w80WX3iTY2W_IEv2SZvrRFeq2Kr0t4p3K4mUSUY_dmE";
-
-    // this.usersApi.getUserById(id, token).subscribe(res => {
-    //   console.log("USERS API: ", res)
-    // });
-    const res = this.usersApi.getUserById(id, token)
-    console.log("USER: ", res)
   }
 
   inicializarValores(){

@@ -4,13 +4,13 @@
             <h5>Iniciar sesión</h5>
             <form>
                 <div class="form-group mt-4">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" [(ngModel)]="txtEmail" [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group mt-4">
-                    <input type="password" class="form-control" placeholder="Contraseña">
-                    <small id="emailHelp" class="form-text text-muted text-error">El usuario o contraseña son inválidos.</small>
+                    <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="txtPassword" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="errorText" class="form-text text-muted text-error">{{ errorText }}</small>
                 </div>
-                <button type="button" class="btn btn-primary btn-block btn-dark mt-2">INICIAR SESIÓN</button>
+                <button type="button" class="btn btn-primary btn-block btn-dark mt-2" (click)="login()">INICIAR SESIÓN</button>
                 <button type="button" class="btn btn-link btn-block" (click)="goToSignUp()">Registrarme</button>
             </form>
         </div>
