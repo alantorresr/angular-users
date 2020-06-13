@@ -18,12 +18,20 @@ export class UsersapiService {
     });
 
     const data: any = {
-      "id": id
+      id
     };
 
     let result: any;
     return this.http.post(`${URL_API}/getbyid`, data, {headers});
     // return result.catalogoAño;
+  }
+
+  login(email, password) {
+    const data: any = {
+      email, 
+      password
+    };
+    return this.http.post(`${URL_API}/login`, data);
   }
 
 }
