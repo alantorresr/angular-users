@@ -34,4 +34,15 @@ export class UsersapiService {
     return this.http.post(`${URL_API}/login`, data);
   }
 
+  newUser(name, email, password, team, rol="ADMIN") {
+    const data: any = {
+      name,
+      email, 
+      password,
+      rol,
+      team
+    };
+    return this.http.post(`${URL_API}/new`, data);
+  }
+
 }

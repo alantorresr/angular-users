@@ -4,22 +4,31 @@
             <h5>Registro</h5>
             <form>
                 <div class="form-group mt-4">
-                    <input type="email" class="form-control" placeholder="Nombre">
+                    <input type="text" class="form-control" placeholder="Nombre"
+                        [(ngModel)]="txtName" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.name" class="form-text text-muted text-error">{{ messageErrors.name }}</small>
                 </div>
                 <div class="form-group mt-4">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" 
+                        [(ngModel)]="txtEmail" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.email" class="form-text text-muted text-error">{{ messageErrors.email }}</small>
                 </div>
                 <div class="form-group mt-4">
-                    <input type="password" class="form-control" placeholder="Contraseña">
+                    <input type="password" class="form-control" placeholder="Contraseña"
+                        [(ngModel)]="txtPassword" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.password" class="form-text text-muted text-error">{{ messageErrors.password }}</small>
                 </div>
                 <div class="form-group mt-4">
-                    <input type="password" class="form-control" placeholder="Confirmar contraseña">
-                    <!-- <small id="emailHelp" class="form-text text-muted text-error">La confirmación tiene que ser igual a la contraseña</small> -->
+                    <input type="password" class="form-control" placeholder="Confirmar contraseña" 
+                        [(ngModel)]="txtConfirmPassword" [ngModelOptions]="{standalone: true}" (change)="validate()">
+                    <small *ngIf="messageErrors.confirmPassword" class="form-text text-muted text-error">{{ messageErrors.confirmPassword }}</small>
                 </div>
                 <div class="form-group mt-4">
-                    <input type="email" class="form-control" placeholder="Equipo">
+                    <input type="text" class="form-control" placeholder="Equipo"
+                        [(ngModel)]="txtTeam" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.team" class="form-text text-muted text-error">{{ messageErrors.team }}</small>
                 </div>
-                <button type="button" class="btn btn-primary btn-block btn-dark mt-2">RESGISTRARME</button>
+                <button type="button" class="btn btn-primary btn-block btn-dark mt-2" (click)="signup()">RESGISTRARME</button>
                 <button type="button" class="btn btn-link btn-block" (click)="goToLogin()">Iniciar sesión</button>
             </form>
         </div>
