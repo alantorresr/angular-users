@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NorthwindService } from 'src/app/services/northwind.service';
+import { UsersapiService } from 'src/app/services/usersapi.service';
+import { Router } from '@angular/router';
 
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -63,11 +65,26 @@ export class HistogramaComponent implements OnInit {
 
   public topFilter: any = 5;
 
-  constructor(private north: NorthwindService) { }
+  constructor(private north: NorthwindService, private usersApi: UsersapiService, private router: Router) { }
 
   dataApi: any;
 
+  public dataUsersApi: any;
+  public rol: any;
+
   ngOnInit(): void {
+    const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    this.usersApi.getUserById(usuarioLogeado.id, usuarioLogeado.token).subscribe(
+      res => {
+        this.dataUsersApi = res;
+        this.dataUsersApi = this.dataUsersApi.result;
+        this.rol = this.dataUsersApi.rol
+        if(this.rol === "PIE"){
+          this.router.navigate(['/inicio']);
+        }
+      }, 
+      err => { console.log(err) });
+
     this.north.getHistoricoVentasCombinado().subscribe(res => {
       console.log("API Data Histograma: ", res)
       this.dataApi = res;

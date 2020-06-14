@@ -21,8 +21,8 @@ export class UsersapiService {
       id
     };
 
-    let result: any;
-    return this.http.post(`${URL_API}/getbyid`, data, {headers});
+    // let result: any;
+    return this.http.post(`${URL_API}/getbyid`, data, { headers });
     // return result.catalogoAño;
   }
 
@@ -32,6 +32,17 @@ export class UsersapiService {
       password
     };
     return this.http.post(`${URL_API}/login`, data);
+  }
+
+  newUser(name, email, password, team, rol="ADMIN") {
+    const data: any = {
+      name,
+      email, 
+      password,
+      rol,
+      team
+    };
+    return this.http.post(`${URL_API}/new`, data);
   }
 
 }

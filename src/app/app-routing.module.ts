@@ -5,12 +5,13 @@ import { PastelComponent } from './pages/pastel/pastel.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'inicio', component: InicioComponent},
-  { path: 'histograma', component: HistogramaComponent},
-  { path: 'pastel', component: PastelComponent},
+  { path: 'inicio', component: InicioComponent, canActivate: [AuthGuard]},
+  { path: 'histograma', component: HistogramaComponent, canActivate: [AuthGuard]},
+  { path: 'pastel', component: PastelComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent}
 ];
