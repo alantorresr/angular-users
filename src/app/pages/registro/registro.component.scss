@@ -1,11 +1,13 @@
 .main-container{
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .card-login{
+    max-width: 100%;
     width: 30rem;
     border: 0;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -17,4 +19,12 @@
 
 .btn-login{
     background-color: #22313f!important;
+}
+
+.custom-img{
+    max-height: 18rem;
+}
+
+.link-green {
+    color: #00BFA6!important;
 }

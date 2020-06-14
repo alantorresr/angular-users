@@ -1,4 +1,5 @@
 <div class="container main-container">
+    <img src="../../../assets/img/undraw_signin.png" class="img-fluid custom-img"/>
     <div class="card card-login">
         <div class="card-body">
             <h5>Registro</h5>
@@ -29,7 +30,7 @@
                     <small *ngIf="messageErrors.team" class="form-text text-muted text-error">{{ messageErrors.team }}</small>
                 </div>
                 <button type="button" class="btn btn-primary btn-block btn-dark mt-2" (click)="signup()">RESGISTRARME</button>
-                <button type="button" class="btn btn-link btn-block" (click)="goToLogin()">Iniciar sesión</button>
+                <button type="button" class="btn btn-link btn-block link-green" (click)="goToLogin()">Iniciar sesión</button>
             </form>
         </div>
     </div>
