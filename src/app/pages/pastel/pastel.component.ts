@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NorthwindService } from 'src/app/services/northwind.service';
+import { UsersapiService } from 'src/app/services/usersapi.service';
+import { Router } from '@angular/router';
 
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
@@ -62,7 +64,7 @@ export class PastelComponent implements OnInit {
 
   public topFilter: any = 5;
 
-  constructor(private north: NorthwindService) { }
+  constructor(private north: NorthwindService, private usersApi: UsersapiService, private router: Router) { }
 
   dataApi: any;
 
@@ -76,9 +78,22 @@ export class PastelComponent implements OnInit {
   customer$: Observable<any>;
   selectedCustomer: string[] = [];
 
-  //Logica
+  public dataUsersApi: any;
+  public rol: any;
 
+  //Logica
   ngOnInit(): void {
+    const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    this.usersApi.getUserById(usuarioLogeado.id, usuarioLogeado.token).subscribe(
+      res => {
+        this.dataUsersApi = res;
+        this.dataUsersApi = this.dataUsersApi.result;
+        this.rol = this.dataUsersApi.rol
+        if(this.rol === "BARS"){
+          this.router.navigate(['/inicio']);
+        }
+      }, 
+      err => { console.log(err) });
     // this.north.getHistoricoVentas().subscribe(res => {
     //   console.log("API Data Pastel: ", res);
     // });

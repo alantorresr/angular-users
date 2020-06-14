@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { UsersapiService } from 'src/app/services/usersapi.service';
 
 @Component({
   selector: 'navbar',
@@ -8,9 +9,20 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router, private usersApi: UsersapiService ) { }
+
+  public dataApi: any;
+  public rol: any;
 
   ngOnInit(): void {
+    const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    this.usersApi.getUserById(usuarioLogeado.id, usuarioLogeado.token).subscribe(
+      res => {
+        this.dataApi = res;
+        this.dataApi = this.dataApi.result;
+        this.rol = this.dataApi.rol
+      }, 
+      err => { console.log(err) });
   }
 
   logout() {

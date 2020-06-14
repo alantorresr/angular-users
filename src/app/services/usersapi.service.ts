@@ -21,8 +21,8 @@ export class UsersapiService {
       id
     };
 
-    let result: any;
-    return this.http.post(`${URL_API}/getbyid`, data, {headers});
+    // let result: any;
+    return this.http.post(`${URL_API}/getbyid`, data, { headers });
     // return result.catalogoAño;
   }
 
