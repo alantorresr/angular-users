@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
 
   public dataApi: any;
   public rol: any;
+  public dataTeam: any;
+  public teamName: any;
 
   ngOnInit(): void {
     const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
@@ -21,6 +23,15 @@ export class NavbarComponent implements OnInit {
         this.dataApi = res;
         this.dataApi = this.dataApi.result;
         this.rol = this.dataApi.rol
+        //Se obtiene infomacion del equipo
+        this.usersApi.getTeamById(this.dataApi.team, usuarioLogeado.token)
+        .subscribe( res => {
+          this.dataTeam = res;
+          this.dataTeam = this.dataTeam.result;
+          this.teamName = this.dataTeam.name
+        }, err => {
+          console.log(err)
+        });
       }, 
       err => { console.log(err) });
   }

@@ -29,7 +29,7 @@ public errorText: any;
       return;
     } else {
       this.usersApi.login(this.txtEmail.trim(), this.txtPassword.trim()).subscribe(res => {
-        console.log("LOGIN: ", res)
+        // console.log("LOGIN: ", res)
         this.dataApi = res;
         if(this.dataApi.id) {
           //Logica para llenar local storage con id y token
