@@ -27,6 +27,9 @@ export class RegistroComponent implements OnInit {
     team: ""
   };
 
+  public team: any;
+  public teamId: any = "";
+
   ngOnInit(): void {
   }
 
@@ -39,26 +42,36 @@ export class RegistroComponent implements OnInit {
     if(!isValid) {
       console.log("Válido");
       const data: any = {
-
       };
-      this.usersApi.newUser(this.txtName.trim(), this.txtEmail.trim(), this.txtPassword.trim(), this.txtTeam.trim())
-      .subscribe(res => {
-        this.dataApi = res;
-        console.log(this.dataApi)
-        if(this.dataApi.ok){
-          let usuarioLogeado: any = {
-            id: this.dataApi.id,
-            token: this.dataApi.token
-          };
-          localStorage.setItem('usuarioLogeado', JSON.stringify(usuarioLogeado));
-          this.router.navigate(['/inicio']);
-        } else if (!this.dataApi.ok && this.dataApi.message === "This email already exist in the database.") {
-          this.messageErrors.email = "Ya existe un usuario con este correo";
-        }else if(!this.dataApi.ok) {
-          this.messageErrors.team = "No se pudo completar el registro, inténtelo de nuevo";
-        }
-        
+      this.usersApi.newTeam(this.txtTeam.trim())
+      .subscribe( res => { 
+        console.log(res)
+        this.team = res;
+        this.teamId = this.team.message;
+        console.log("TEAM_ID: ", this.teamId)
+        this.usersApi.newUser(this.txtName.trim(), this.txtEmail.trim(), this.txtPassword.trim(), this.teamId)
+        .subscribe(res => {
+          this.dataApi = res;
+          console.log(this.dataApi)
+          if(this.dataApi.ok){
+            let usuarioLogeado: any = {
+              id: this.dataApi.id,
+              token: this.dataApi.token
+            };
+            localStorage.setItem('usuarioLogeado', JSON.stringify(usuarioLogeado));
+            this.router.navigate(['/inicio']);
+          } else if (!this.dataApi.ok && this.dataApi.message === "This email already exist in the database.") {
+            this.messageErrors.email = "Ya existe un usuario con este correo";
+          }else if(!this.dataApi.ok) {
+            this.messageErrors.team = "No se pudo completar el registro, inténtelo de nuevo";
+          }
+          
+        });
+      }, err => { 
+        console.log(err) 
       });
+
+      
     }
   }
 

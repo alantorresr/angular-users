@@ -1,0 +1,42 @@
+<navbar></navbar>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="avatar" alt="..." class="img-thumbnail rounded-circle">
+        </div>
+
+        <div class="col-md-8">
+            <form *ngIf="!isEditing">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre: {{ name }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Email: {{ email }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Equipo: {{ teamName }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Rol: {{ rol }}</label>
+                </div>
+                <button type="button" class="btn btn-outline-dark btn-block" (click)="editarInformacion()">Editar</button>
+            </form>
+
+            <form *ngIf="isEditing" class="mt-5">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Nombre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.name" class="form-text text-muted text-error">{{ messageErrors.name }}</small>
+                </div>
+                <div class="form-group" *ngIf="rol === 'ADMIN'">
+                    <label for="exampleInputPassword1">Nombre de equipo:</label>
+                    <input type="text" class="form-control" [(ngModel)]="teamName" [ngModelOptions]="{standalone: true}">
+                    <small *ngIf="messageErrors.name" class="form-text text-muted text-error">{{ messageErrors.teamName }}</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block btn-info mt-2" (click)="actualizarInformacion()" *ngIf="isEditing">ACTUALIZAR</button>
+                <button type="button" class="btn btn-outline-secondary btn-block mt-2" (click)="cancelar()" *ngIf="isEditing">CANCELAR</button>
+            </form>
+        </div>
+    </div>
+</div>
