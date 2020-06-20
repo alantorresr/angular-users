@@ -23,6 +23,7 @@ export class UsuariosComponent implements OnInit {
   public editingUserId = "";
 
   public isEditing = false;
+  public noUsers = false;
 
   public messageErrors: any = {
     name: "",
@@ -49,6 +50,11 @@ export class UsuariosComponent implements OnInit {
           this.dataTeamMembers = res;
           this.dataTeamMembers = this.dataTeamMembers.result;
           this.dataTeamMembers = this.dataTeamMembers.filter(member => member._id !== this.dataApi._id);
+          if(this.dataTeamMembers.length === 0) {
+            this.noUsers = true;
+          } else {
+            this.noUsers = false;
+          }
           // console.log("Members", this.dataTeamMembers);
         }, err => {
           console.log(err)

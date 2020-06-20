@@ -29,7 +29,13 @@
         </div>
 
         <div class="col-md-8">
-            <table class="table">
+
+            <div class="container d-flex flex-column align-items-center" *ngIf="noUsers">
+                <img src="../../../assets/img/undraw_adduser.png" class="img-fluid custom-img" />
+                <h5>¡Agrega un nuevo usuario a tu equipo!</h5>
+            </div>
+
+            <table class="table" *ngIf="!noUsers">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
